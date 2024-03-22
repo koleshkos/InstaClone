@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
   devise_scope :user do
     get '/users', to: 'devise/registrations#new'
     get '/users/password', to: 'devise/password#new' 
     get '/users/sign_out', to: 'devise/sessions#destroy' 
+    get '/users/edit', to: 'devise/registrations#edit'
   end
 
-  devise_for :users
 
   get 'home/about'
   resources :posts
