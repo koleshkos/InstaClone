@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   before_create :randomize_id
 
+  validates :username, presence: true
+
   private
 
   def randomize_id
