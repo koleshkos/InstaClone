@@ -15,6 +15,10 @@
       </li>			
 
 			<% if user_signed_in? %>
+        <li class="nav-item">
+        	<%= link_to "View my profile", current_user, class: "nav-link" %>
+      	</li>
+
 				<li class="nav-item">
         	<%= link_to "Sing out", destroy_user_session_path, class: "nav-link" %>
       	</li>
