@@ -1,5 +1,9 @@
 <div class="row">
 	<div class="col-12 text-center" style="padding: 20px; background-color: #f2f2f2">
+		<% if @user.avatar.attached? %>
+    	<%= image_tag @user.avatar, style:"width: 500px; heigth: 500px;"%>
+  	<% end %>
+
 		<h3><%= @user.username %></h3>
 		<h3><%= @user.email %></h3>
 		<h3><%= @user.bio %></h3>
