@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  followability
 
   has_many :posts
   has_many :comments
@@ -12,6 +14,10 @@ class User < ApplicationRecord
   before_create :randomize_id
 
   validates :username, presence: true
+
+  def unfollow(user)
+    followerable_relationships.where(followable_id: user.id).destroy_all
+  end
 
   private
 

@@ -9,3 +9,15 @@
 		<h3><%= @user.bio %></h3>
 	</div>
 </div>
+
+<% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar, style:"width: 50px; heigth: 50px;"%>
+<% end %>
+
+<% if current_user.following?(@user) %>
+	<%= button_to "Unfollow", unfollow_path(@user) %>
+<% elsif current_user.sent_follow_request_to?(@user)%>
+	<%= button_to "Cancel follow request", cancel_path(@user) %>
+<% else %>
+	<%= button_to "Follow", follow_path(@user) %>
+<% end %>
