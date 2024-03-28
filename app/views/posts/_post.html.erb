@@ -1,11 +1,20 @@
 <div id="<%= dom_id post %>" class="text-center post-container col-6" style="margin: auto;">
   <p>
+    <% if post.user.avatar.attached? %>
+      <%= image_tag post.user.avatar, style:"width: 50px; heigth: 50px;"%>
+    <% end %>
+
+    <%= link_to post.user.username, post.user, style: "z-index:" %>
+  </p>
+  
+  <p>
     <%= post.title %>
   </p>
   
   <p>
-    <%= link_to "", post, class: "post-link", style: "z-index:" %>
+    <%#= link_to "", post, class: "post-link", style: "z-index:" %>
   </p>
+
 
   <% post.images.each do |image| %>
     <%= image_tag(image, style: "object-fit: cover; width: 300px; height: 600px") %>
@@ -14,9 +23,15 @@
   <p>
     <%= post.description %>
   </p>
-  
-  <p>
-    <%= link_to post.user.email, post.user, style: "z-index:" %>
-  </p>
+
+  <% if user_signed_in? %>
+    <% like = current_user.likes.find_by(post: post) %>
+    <% if like.nil? %>
+      <%= button_to "like", likes_path, params: { like: { post_id: post.id }}, method: post %>
+    <% else %>
+      <%= button_to "Unlike", like_path(like), method: :delete %>
+    <% end %>
+  <% end %>
+  <p><%= post.likes.count %> Likes </p>
 </div>
 
