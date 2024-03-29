@@ -26,4 +26,11 @@ class User < ApplicationRecord
       self.id = SecureRandom.random_number(1_000_000_000)
     end while User.where(id: self.id).exists?  
   end
+
+  enum role: [:user, :admin]
+          after_initialize :set_default_role, :if => :new_record?
+          def set_default_role
+          # All sing up user is Admin
+          self.role ||= :admin
+          end
 end
