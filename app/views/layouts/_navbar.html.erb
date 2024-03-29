@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <%= link_to "InstaClone", root_path, class: "navbar-brand", style: "margin-left: 20px;"%>
-
   
+  <%= form_with url: profiles_index_path, method: :get do |form| %>
+    <%= form.search_field :query, value: params[:query], placeholder: "Search", class:"search-field" %>
+    <%= form.submit "Search", class:"btn btn-primary" %>
+  <% end %>  
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

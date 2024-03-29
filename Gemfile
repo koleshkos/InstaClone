@@ -30,6 +30,8 @@ gem 'followability', github: 'nejdetkadir/followability', branch: 'main'
 
 gem 'rails_admin'
 
+gem 'ransack'
+
 gem 'pagy'
 
 gem 'active_analytics'
