@@ -30,6 +30,8 @@ gem 'followability', github: 'nejdetkadir/followability', branch: 'main'
 
 gem 'rails_admin'
 
+gem 'pagy'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 end
