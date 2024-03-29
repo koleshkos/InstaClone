@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   get 'home/about'
   get 'posts/myposts'
+  get 'posts/discover'
   resources :posts
 
   root "posts#index"

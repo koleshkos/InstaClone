@@ -13,6 +13,10 @@ class PostsController < ApplicationController
     @comment = @post.comments.build
   end
 
+  def discover
+    @posts = Post.all
+  end
+
   # GET /posts/new
   def new
     @post = Post.new
