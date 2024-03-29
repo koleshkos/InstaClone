@@ -32,6 +32,8 @@ gem 'rails_admin'
 
 gem 'pagy'
 
+gem 'active_analytics'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 end
